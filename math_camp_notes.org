@@ -1,0 +1,15 @@
+#+TITLE: Math Camp Notes
+#+AUTHOR: Chris Ackerman
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{titlesec} % Used to customize the \section command
+#+LATEX_HEADER: \usepackage{hyperref} % Required for adding links	and customizing them
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \hypersetup{colorlinks,breaklinks} % Set link colors throughout the document
+#+LATEX_HEADER: \usepackage{booktabs}
+#+OPTIONS: 
+
+\maketitle
+
+* Single Variable Calculus I
+* Single Variable Calculus II
+* Introduction to Optimization
