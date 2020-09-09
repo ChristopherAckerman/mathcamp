@@ -1,0 +1,5 @@
+#exclude temp and swap files
+\#math_camp_notes.tex\#
+math_camp_notes.org~
+math_camp_notes.tex~
+
