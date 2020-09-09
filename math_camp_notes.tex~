@@ -1,4 +1,4 @@
-% Created 2020-09-09 Wed 14:16
+% Created 2020-09-09 Wed 18:33
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -14,12 +14,17 @@
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{url}
+\newtheorem*{definition}{Definition}
+\newtheorem{question}{Question}
 \usepackage[margin=1in]{geometry}
 \usepackage{titlesec} % Used to customize the \section command
 \usepackage{hyperref} % Required for adding links	and customizing them
-\usepackage{xcolor}
-\hypersetup{colorlinks,breaklinks} % Set link colors throughout the document
+\usepackage[dvipsnames]{xcolor}
 \usepackage{booktabs}
+\newcommand{\gr}{\textcolor{ForestGreen}}
+\newcommand{\rd}{\textcolor{red}}
 \author{Chris Ackerman}
 \date{\today}
 \title{Math Camp Notes}
@@ -33,10 +38,180 @@
 \begin{document}
 
 \maketitle
+\begin{abstract}
+These are my notes from UCLA summer math camp with Ichiro Obara. I've copied down the definitions that I thought would be useful throughout my PhD studies, usually because I learned something new, I think the definition will be used in coursework, or because it's something I was supposed to learn a long time ago but keep forgetting. If you have any questions, or if you notice any errors, please submit a  pull request or email \url{christopherackerman104@gmail.com}.
+\end{abstract}
+
+\setcounter{tocdepth}{2}
 \tableofcontents
 
 \maketitle
 
 \section{Single Variable Calculus I}
-\label{sec:org6d21b98}
+\label{sec:orgc9c26ff}
+\begin{definition}[Graph]
+The set of $(x, y)$ that $f$ passes through is called the \gr{graph} of $f$.
+\end{definition}
+
+\begin{definition}[Convergent Sequence]
+A sequence ${x_n}_n$ \gr{converges to} $x^* \in \mathbb{R}$ if, for any $\varepsilon > 0$, there exists an integer $N$ such that $|x_n| \le K$ for every $n$.
+\end{definition}
+
+\begin{definition}[Continuous Function]
+Function $f: X \to \mathbb{R}$ is \gr{continuous at $x \in X$} if $x_n \to x$ for $x_n \in X \implies f(x_n) \to f(x)$. $f$ is \gr{continuous} if it is continuous at every $x$ in its domain $X$. 
+\end{definition}
+
+\begin{definition}[Differentiable Function and Derivative]
+A function $f$ on $(a, b)$ is \gr{differentiable} at $x \in (a, b)$ if $\frac{f(x + \Delta x) - f(x)}{\Delta x}$ converges to the same number for any sequence $\Delta x(\ne 0)$ such that $|\Delta x| \to 0$. This number is the \gr{derivative} of $f$ at $x$. $f$ is differentiable on $(a, b)$ if it is differentiable at every $x \in (a, b)$.
+\end{definition}
+
+\subsection{Rules for Taking Derivatives of Simple Analytic Functions}
+\label{sec:org94d9dbd}
+\begin{definition}[Product Rule]
+\[
+\left(f(x)g(x)\right)' = f'(x)g(x) + f(x)g'(x)
+\]
+\end{definition}
+\begin{definition}[Quotient Rule]
+\[
+\left(\frac{f(x)}{g(x)}\right)' = \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}
+\]
+\end{definition}
+\begin{definition}[Chain Rule]
+Consider a composite function 
+\[
+h(x) = g(f(x)).
+\]
+If $f$ is differentiable at $x$ and $g$ is differentiable at $f(x)$, then $h$ is differentiable at $x$ and its derivative is given by
+\[
+h'(x) = g'(f(x)) \cdot f'(x).
+\]
+\end{definition}
+
+\begin{definition}[Inverse Function]
+The \gr{inverse} function $f^{-1}$ of $f$ is defined for each $x$ in the range of $f$ as the unique value that satisfies
+\[
+f(f^{-1}(x)) = x.
+\]
+If $f$ is differentiable and has an inverse $f^{-1}$, then $f^{-1}$ is differentiable and the derivative of $f^{-1}$ is the reciprocal of $f'$.
+\end{definition}
+
+\begin{definition}[elasticity]
+\gr{Elasticity} measures the percentage change of a variable with respect to a percentage change of another variable. Suppose that two variables, $x$ and $y$, satisfy $y = f(x)$. The \gr{$x$-elasticity of $y$} at $(x_0, y_0)$ is given by 
+\[
+\underset{\Delta x \to 0}{\lim} \frac{\frac{\Delta y}{y_0}}{\frac{\Delta x}{x_0}} = \underset{\Delta x \to 0}{\lim} \frac{\frac{f(x_0 + \Delta x) - f(x_0)}{f(x_0)}}{\frac{\Delta x}{x_0}} = f'(x_0) \frac{x_0}{f(x_0)}.
+\]
+We often express variables in natural logs to find the elasticity more easily. In logs, the $x$-elasticity of $y$ is
+\[
+\frac{d \ln y}{d \ln x}.
+\]
+\end{definition}
+\subsection{Exercises and Solutions}
+\label{sec:org77d869b}
+\begin{question}
+Let $\{x_n\}_n$ and $\{y_n\}_n$ be two convergent sequences. Show that
+\begin{enumerate}
+\item $\lim (x_n y_n) = \lim x_n \lim y_n$,
+\item $\lim \left(\frac{x_n}{y_n}\right) = \frac{\lim x_n}{\lim y_n} $, assuming $\lim y_n \ne 0$.
+\end{enumerate}
+\end{question}
+\begin{proof}[Answer]
+$ $ \newline
+\begin{enumerate}
+\item
+\begin{align*}
+\intertext{Note that}
+xy - x_n y_n &= x(y - y_n) + (x - x_n)y_n.\\
+\intertext{So,}
+|xy - x_n y_n| & \le |x(y - y_n)| + |(x - x_n)y_n|. \tag{Triangle Inequality}\\
+\intertext{Since $\{y_n\}_n$ is a convergent (thus bounded) sequence, there exists a $K$ such that}
+|(x - x_n)y_n| & \le |x - x_n| |y_n|\\
+& \le |(x - x_n)|K.
+\intertext{\rd{Do we need to repeat the argument for $K$ here for $\{x_n\}$?}}
+\intertext{Then,}
+|x(y - y_n)| & \le |x| |(y - y_n)| \to 0,\\
+\intertext{and}
+|(x - x_n)y_n| & \le |(x - x_n)|K \to 0.\\
+\intertext{Therefore, }
+|xy - x_n y_n| & \to 0.
+\end{align*}
+\item
+\begin{align*}
+\intertext{Choose $m$ so that $|y_n - y| < \frac{1}{2} y$ for $n \ge m$. Then,}
+|y_n| & > \frac{1}{2}|y|. \tag{$n \ge m$}\\
+\intertext{Given $\varepsilon > 0$, there is an integer $N > m$ such that $n \ge N$ implies}
+|y_n - y| & < \frac{1}{2} |s|^2 \varepsilon.\\
+\intertext{Hence, for $n \ge N$,}
+\left|\frac{1}{y_n} - \frac{1}{y}\right| &= \left|\frac{y_n - y}{y_n y} \right|\\
+& < \frac{2}{|y|^2} |y_n - y|\\
+& < \varepsilon.
+\end{align*}
+Substitute this result into the previous proof to get the desired result.
+\end{enumerate}
+\end{proof}
+\begin{question}
+Show that a bounded increasing sequence $x_1 \le x_2 \le \ldots \le K < \infty$ must be a convergent sequence (use Bolzano-Weierstrasse).
+\end{question}
+\begin{proof}[Answer]
+\begin{align*}
+\intertext{Since $\{x_n\}_n$ is bounded between $x_1$ and $K$, it has a convergent subsequence by BWT. Let $\{x_n\}_k$ denote this subsequence, and let $x^*$ be its limit, and note that $x^* \le K$. By the definition of a limit, for any $\varepsilon > 0$, there exists a $\hat{k}$ such that}
+|x_{n(k)} - x^*| & < \varepsilon \text{ for } k \ge \hat{k}.
+\intertext{Because the original sequence is increasing, this also holds for any $n \ge n(k)$ in the original sequence, completing the proof.}
+\end{align*}
+\end{proof}
+\begin{question}
+Let $f:\mathbb{R} \to \mathbb{R}$ and $g: \mathbb{R} \to \mathbb{R}$ be continuous functions. Show that $h(x) \equiv g(f(x))$ is a continuous function.
+\end{question}
+\begin{proof}[Answer]
+Start with $f(x)$ and take the limits one at a time. Use continuity at each step to show that the composite function $h$ is also continuous.
+\end{proof}
+
+\begin{question}
+Derive the price elasticity of $q = -\frac{p}{3} + 8$ as a function of $p$. Note that the answer will only be defined for $p \in (0, 24)$.
+\end{question}
+\begin{proof}[Answer]
+\begin{align*}
+\intertext{Start with the definition,}
+\varepsilon &= f'(p) \frac{p}{f(p)}\\
+f(p) &= \frac{-p}{3} + 8\\
+f'(p) &= -\frac{1}{3}\\
+\varepsilon &= \frac{-1}{3} \cdot \frac{p}{\frac{-p}{3} + 8}\\
+&= - \frac{1}{3} \cdot \frac{3p}{-p + 24}\\
+&= \frac{-p}{24 - p}
+\end{align*}
+\end{proof}
+\begin{question}
+Derive the $x$-elasticity of $f(x) = 3x^2$ and show that it does not depend on $x$. More generally, discuss why any function $f: \mathbb{R}_+ \to \mathbb{R}_+$ with constant elasticity can be expressed as $Ax^B$ with some $A > 0$ and $B \in \mathbb{R}$.
+\end{question}
+\begin{proof}[Answer]
+\begin{align*}
+\intertext{Let's follow the same steps as the last question.}
+\varepsilon = f'(x) \frac{x}{f(x)}\\
+f(x) &= 3x^2\\
+f'(x) &= 6x\\
+\varepsilon &= \frac{6x \cdot x}{3x^2}\\
+&= 2.\\
+\intertext{For the second part of the question, I'm going to prove the generalized form of the previous result.}
+f(x) &= Ax^B\\
+f'(x) &= ABx^{B - 1}\\
+\varepsilon &= \frac{AB x^{B - 1} \cdot x}{Ax^B}\\
+&= \frac{ABx^B}{Ax^B}\\
+&= B.\\
+\intertext{\rd{This approach is different from Ichiro's solution and goes in the opposite direction. It doesn't have the same intuition from the log transform, but I think it's still sufficient.}}
+\end{align*}
+\end{proof}
+\begin{question}
+Show that the $x$-elasticity of $f(x)g(x)$ is the sum of the $x$-elasticity of $f(x)$ and the $x$-elasticity of $g(x)$.
+\end{question}
+\begin{proof}[Answer]
+\begin{align*}
+\intertext{Take the log transform of the function. More generally, this is a nice way to get separable forms of multiplicative equations.}
+\frac{d \ln fg}{d \ln x} & = \frac{d \ln f + d \ln g}{d \ln x}\\
+& = \frac{d \ln f}{d \ln x} + \frac{d \ln g}{d \ln x}.
+\end{align*}
+\end{proof}
+\section{Single Variable Calculus II}
+\label{sec:orge48eae7}
+\section{Introduction to Optimization}
+\label{sec:org542b75f}
 \end{document}

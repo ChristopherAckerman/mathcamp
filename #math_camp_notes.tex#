@@ -1,4 +1,10 @@
-% Created 2020-09-09 Wed 18:34
+% Created 2020-09-09 Wed 1
+% \begin{lp}
+%   \begin{lp}
+%     
+%   \end{lp}
+% \end{lp}
+% 8:32
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -22,6 +28,7 @@
 \usepackage{titlesec} % Used to customize the \section command
 \usepackage{hyperref} % Required for adding links	and customizing them
 \usepackage[dvipsnames]{xcolor}
+\hypersetup{colorlinks,breaklinks} % Set link colors throughout the document
 \usepackage{booktabs}
 \newcommand{\gr}{\textcolor{ForestGreen}}
 \newcommand{\rd}{\textcolor{red}}
@@ -47,9 +54,8 @@ These are my notes from UCLA summer math camp with Ichiro Obara. I've copied dow
 
 \maketitle
 
-\newpage
 \section{Single Variable Calculus I}
-\label{sec:orgab74cce}
+\label{sec:orge49560d}
 \begin{definition}[Graph]
 The set of $(x, y)$ that $f$ passes through is called the \gr{graph} of $f$.
 \end{definition}
@@ -67,7 +73,7 @@ A function $f$ on $(a, b)$ is \gr{differentiable} at $x \in (a, b)$ if $\frac{f(
 \end{definition}
 
 \subsection{Rules for Taking Derivatives of Simple Analytic Functions}
-\label{sec:org1aea70c}
+\label{sec:org4e11c7f}
 \begin{definition}[Product Rule]
 \[
 \left(f(x)g(x)\right)' = f'(x)g(x) + f(x)g'(x)
@@ -108,7 +114,7 @@ We often express variables in natural logs to find the elasticity more easily. I
 \]
 \end{definition}
 \subsection{Exercises and Solutions}
-\label{sec:orgcb0db95}
+\label{sec:org5753669}
 \begin{question}
 Let $\{x_n\}_n$ and $\{y_n\}_n$ be two convergent sequences. Show that
 \begin{enumerate}
@@ -212,7 +218,7 @@ Show that the $x$-elasticity of $f(x)g(x)$ is the sum of the $x$-elasticity of $
 \end{align*}
 \end{proof}
 \section{Single Variable Calculus II}
-\label{sec:orgbc371d7}
+\label{sec:orgdc8c9fb}
 \section{Introduction to Optimization}
-\label{sec:org0234d93}
+\label{sec:org4980761}
 \end{document}
